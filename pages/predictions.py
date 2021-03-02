@@ -30,8 +30,29 @@ column1 = dbc.Col(
 
 column2 = dbc.Col(
     [
-
-    ]
+        dcc.Markdown('## Predictions', className='mb-5'),
+        dcc.Markdown('#### 10-year Treasury (%)'),
+        dcc.Slider(
+            id='10-year-T',
+            min=0.0,
+            max=15.0,
+            step=0.1,
+            value=1.4,
+            marks={n: str(n) for n in range(0,15,1)},
+            className='mb-5'
+        ),
+        dcc.Markdown('## Predictions', className='mb-5'),
+        dcc.Markdown('#### Quarterly Corporate Profits (Billions)'),
+        dcc.Slider(
+            id='Corporate-Profits',
+            min=1500,
+            max=3000,
+            step=1,
+            value=2200,
+            marks={n: str(n) for n in range(1500,3000,150)},
+            className='mb-5'
+        ),
+    ],
 )
 
 layout = dbc.Row([column1, column2])
