@@ -16,17 +16,17 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
         
-            ## Your Value Proposition
+            Predict if the next month's close for the S&P 500 is up or down using a supervised learning model. 
 
-            Emphasize how the app will benefit users. Don't emphasize the underlying technology.
+            There is an enormous set of factors that go into making market predictions, and it is acknowledged that this app isn't the best at making them. 
 
-            ✅ RUN is a running app that adapts to your fitness levels and designs personalized workouts to help you improve your running.
+            The S&P 500 - Month Ahead Direction application is to be used for fun, rather than for investment purposes.
 
-            ❌ RUN is the only intelligent running app that uses sophisticated deep neural net machine learning to make your run smarter because we believe in ML driven workouts.
+            Is the market going to close up or down next month based on our inputs?  Let's find out!
 
             """
         ),
-        dcc.Link(dbc.Button('Your Call To Action', color='primary'), href='/predictions')
+        dcc.Link(dbc.Button('Generate Predictions -->', color='primary'), href='/predictions')
     ],
     md=4,
 )
