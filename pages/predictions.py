@@ -13,14 +13,16 @@ from joblib import load
 
 pipeline = load("assets/XGBC.joblib")
 
-sp = pd.read_csv('asset/sp500_df.csv')
-target = 'SP500-PosNeg'
-y = [target]
-X = sp.drop(columns=target)
-pipeline.fit(X, y)
+# sp = pd.read_csv("assets/sp500_df.csv")
+# cols = ['10-year-T', 'Corporate-Profits', 'GDP', 'Net-Exports', 'Unemployment-Rate', 'SP500-PosNeg']
+# sp_df = sp[[cols]]
+# target = 'SP500-PosNeg'
+# y = sp_df[target]
+# X = sp_df.drop(columns=target)
+# pipeline.fit(X, y)
 
 @app.callback(
-    Output('prediction-content', 'SP500-PosNeg'),
+    Output('prediction-content', 'children'),
     [Input('10-year-T', 'value'),
      Input('Corporate-Profits', 'value'),
      Input('GDP', 'value'),
