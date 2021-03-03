@@ -79,7 +79,7 @@ column2 = dbc.Col(
             min=000,
             max=3500,
             step=1,
-            value=2200,
+            value=500,
             marks={n: str(n) for n in range(00,3501,500)},
             className='mb-5'
         ), 
@@ -112,7 +112,7 @@ column2 = dbc.Col(
             min=5000,
             max=25000,
             step=1,
-            value=19000,
+            value=12500,
             marks={n: str(n) for n in range(0,25001,2500)},
             className='mb-5'
         ),
@@ -167,7 +167,7 @@ column2 = dbc.Col(
             min=0.0,
             max=16.0,
             step=0.1,
-            value=6.3,
+            value=8.0,
             marks={n: str(n) for n in range(0,17,2)},
             className='mb-5'
         )
