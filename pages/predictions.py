@@ -44,16 +44,16 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
         
-            ## Predictions
+            ### Predictions
 
             Add your predicted input values for the economic indicators presented on the right, 
             and  have the probability of the S&P 500 advancing in the following month 
-            returned, based on these predictions. 
+            returned. 
 
             """
         ),
         html.H3('________________________________', className='mb-3'), 
-        html.H3('Percent chance next month close for the S&P 500 is up', className='mb-3'), 
+        html.H4("S&P 500's next month close will be up - ", className='mb-3'), 
         html.Div(id='prediction-content', className='lead')
     ],
     md=5,

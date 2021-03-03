@@ -131,7 +131,7 @@ column1 = dbc.Col(
         html.H5("Quick scatter plotting of the features versus the target", className='mb-3'), 
         dcc.Markdown(
             """
-        
+              
             * Connections were often seemingly apparent
 
             * Outliers are present 
@@ -143,37 +143,22 @@ column1 = dbc.Col(
             """
         ),
         html.H3('______________________________________________', className='mb-3'), 
-        html.H5("Quick scatter plotting of the features versus the target", className='mb-3'), 
+        html.H5("PDP Isolate Plots and PDP Interact Plots", className='mb-3'), 
         dcc.Markdown(
             """
         
-            * Connections were often seemingly apparent
+            * PDP isolate plots show the marginal effects a feature has on the predicted outcome
 
-            * Outliers are present 
+            * The isolate plot on the right shows us that declines in industrial production decrease the chances of the index advancing
             
-            * OLS appears biased 
+            * PDP interact plot shows us the marginal effect that two features have on the predicted model outcome
 
-            * Log transformations did not appear to significantly change the perspective
+            * The interact plot on the lower right tells us that as long-term interest rates rise, the probability of the index advancing decreases
 
-            * Another take on random walk versus useful signal
+            * The interact plot also indicates that as corporate profits increase, so do the chances of the market advancing in the following month
             
             """
-        ),
-        dcc.Markdown(
-            """
-            
-            Hold times matter, and long-term trends save most index investors in the end,
-
-            """
-        ),
-        dcc.Markdown(
-            """
-            
-            ...as long as they hold on for dear life ---> the longer the better.
-
-            """
-        ), 
-        
+        ),        
     ],
     md=7
 )
