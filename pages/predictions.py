@@ -13,13 +13,9 @@ from joblib import load
 
 pipeline = load("assets/XGBC.joblib")
 
-# sp = pd.read_csv("assets/sp500_df.csv")
-# cols = ['10-year-T', 'Corporate-Profits', 'GDP', 'Net-Exports', 'Unemployment-Rate', 'SP500-PosNeg']
-# sp_df = sp[[cols]]
-# target = 'SP500-PosNeg'
-# y = sp_df[target]
-# X = sp_df.drop(columns=target)
-# pipeline.fit(X, y)
+# pipeline = load("assets/pipeline.joblib")
+# pipeline = load("assets/XGBCfull.joblib")
+
 
 @app.callback(
     Output('prediction-content', 'children'),
@@ -39,7 +35,7 @@ def predict(ten_year, corporate_profits, gdp, net_exports, unemployment):
         data=[[ten_year, corporate_profits, gdp, net_exports, unemployment]]
     )
     y_pred = pipeline.predict_proba(df)[0]
-    return f'{y_pred} years'
+    return f'{y_pred[1]*100:.2f}% probability'
 
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
@@ -50,14 +46,17 @@ column1 = dbc.Col(
         
             ## Predictions
 
-            Your instructions: How to use your app to get new predictions.
+            Add your predicted input values for the economic indicators presented on the right, 
+            and  have the probability of the S&P 500 advancing in the following month 
+            returned, based on these predictions. 
 
             """
         ),
-        html.H2('Percent chance next month close for the S&P 500 is up', className='mb-5'), 
+        html.H3('________________________________', className='mb-3'), 
+        html.H3('Percent chance next month close for the S&P 500 is up', className='mb-3'), 
         html.Div(id='prediction-content', className='lead')
     ],
-    md=4,
+    md=5,
 )
 
 column2 = dbc.Col(
@@ -77,24 +76,79 @@ column2 = dbc.Col(
         dcc.Markdown('#### Corporate Profits (Billions)'),
         dcc.Slider(
             id='Corporate-Profits',
-            min=1300,
-            max=3200,
+            min=000,
+            max=3500,
             step=1,
             value=2200,
-            marks={n: str(n) for n in range(1500,3100,300)},
+            marks={n: str(n) for n in range(00,3501,500)},
             className='mb-5'
-        ),
+        ), 
+        #dcc.Markdown('## Predictions', className='mb-5'),
+        # dcc.Markdown('#### Consumer Price Index'),
+        # dcc.Slider(
+        #     id='CPI',
+        #     min=100,
+        #     max=400,
+        #     step=1,
+        #     value=285,
+        #     marks={n: str(n) for n in range(100,401,50)},
+        #     className='mb-5'
+        # ), 
+        #dcc.Markdown('## Predictions', className='mb-5'),
+        # dcc.Markdown('#### Exports, Goods & Services (Billions)'),
+        # dcc.Slider(
+        #     id='Exports-Goods-Services',
+        #     min=0,
+        #     max=3000,
+        #     step=10,
+        #     value=2100,
+        #     marks={n: str(n) for n in range(0,3001,500)},
+        #     className='mb-5'
+        # ), 
         #dcc.Markdown('## Predictions', className='mb-5'),
         dcc.Markdown('#### U.S. Gross Domestic Product (Billions)'),
         dcc.Slider(
             id='GDP',
             min=5000,
-            max=22000,
+            max=25000,
             step=1,
             value=19000,
-            marks={n: str(n) for n in range(7000,21000,3000)},
+            marks={n: str(n) for n in range(0,25001,2500)},
             className='mb-5'
         ),
+        #dcc.Markdown('## Predictions', className='mb-5'),
+        # dcc.Markdown('#### Housing Starts'),
+        # dcc.Slider(
+        #     id='Housing-Starts',
+        #     min=0,
+        #     max=3000,
+        #     step=1,
+        #     value=1487,
+        #     marks={n: str(n) for n in range(0,3001,500)},
+        #     className='mb-5'
+        # ),
+        #dcc.Markdown('## Predictions', className='mb-5'),
+        # dcc.Markdown('#### Industrial Production Index'),
+        # dcc.Slider(
+        #     id='Industrial-Production',
+        #     min=0,
+        #     max=150,
+        #     step=1,
+        #     value=102,
+        #     marks={n: str(n) for n in range(0,151,25)},
+        #     className='mb-5'
+        # ),
+        #dcc.Markdown('## Predictions', className='mb-5'),
+        # dcc.Markdown('#### Initial Claims'),
+        # dcc.Slider(
+        #     id='Initial-Claims',
+        #     min=100_000,
+        #     max=1_000_000,
+        #     step=1_000,
+        #     value=215_000,
+        #     marks={n: str(n) for n in range(0,1_000_001,100_000)},
+        #     className='mb-5'
+        # ),
         #dcc.Markdown('## Predictions', className='mb-5'),
         dcc.Markdown('#### Net Exports (Billions)'),
         dcc.Slider(

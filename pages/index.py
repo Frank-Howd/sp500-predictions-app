@@ -3,7 +3,10 @@ import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
+
 from dash.dependencies import Input, Output
+from pdpbox.pdp import pdp_isolate, pdp_plot, pdp_interact, pdp_interact_plot
+
 import pandas as pd
 import plotly.express as px
 
@@ -33,6 +36,17 @@ column1 = dbc.Col(
 )
 
 df = pd.read_csv("assets/sp500_df")
+
+# features = ['Corporate-Profits', '10-year-T']
+
+# interact = pdp_interact(
+#     model=model_lr,
+#     dataset=X_test,
+#     model_features=X_test.columns,
+#     features=features
+# )
+
+# pdp_interact_plot(interact, plot_type='grid', feature_names=features);
 
 fig = px.scatter(df, x='10-year-T', y='SP500-Ahead', trendline='ols', 
                  title='10-year Treasury yield vs Month Ahead S&P 500 Close')
