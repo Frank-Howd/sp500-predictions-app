@@ -35,7 +35,7 @@ column1 = dbc.Col(
     md=4,
 )
 
-df = pd.read_csv("assets/sp500_df")
+#df = pd.read_csv("assets/sp500_df")
 
 # features = ['Corporate-Profits', '10-year-T']
 
@@ -48,15 +48,16 @@ df = pd.read_csv("assets/sp500_df")
 
 # pdp_interact_plot(interact, plot_type='grid', feature_names=features);
 
-fig = px.scatter(df, x='10-year-T', y='SP500-Ahead', trendline='ols', 
-                 title='10-year Treasury yield vs Month Ahead S&P 500 Close')
+# fig = px.scatter(df, x='10-year-T', y='SP500-Ahead', trendline='ols', 
+#                  title='10-year Treasury yield vs Month Ahead S&P 500 Close')
 # gapminder = px.data.gapminder()
 # fig = px.scatter(gapminder.query("year==2007"), x="gdpPercap", y="lifeExp", size="pop", color="continent",
 #            hover_name="country", log_x=True, size_max=60)
 
 column2 = dbc.Col(
     [
-        dcc.Graph(figure=fig),
+        #dcc.Graph(figure=fig),
+        html.Img(src='assets/graph_3D.png', className='img-fluid')
     ]
 )
 
