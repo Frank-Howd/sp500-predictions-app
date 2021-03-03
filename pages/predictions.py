@@ -32,7 +32,7 @@ def predict(ten_year, corporate_profits, gdp, net_exports, unemployment):
                  'Corporate-Profits', 
                  'GDP',
                  'Net-Exports',
-                 'Unemployment_Rate'],
+                 'Unemployment-Rate'],
         data=[[ten_year, corporate_profits, gdp, net_exports, unemployment]]
     )
     y_pred = pipeline.predict_proba(df)[0]
