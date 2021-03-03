@@ -57,7 +57,7 @@ column1 = dbc.Col(
 column2 = dbc.Col(
     [
         #dcc.Graph(figure=fig),
-        html.Img(src='assets/index_3d.png', className='img-fluid')
+        html.Img(src='assets/sp_poss_best.png', className='img-fluid')
     ]
 )
 
