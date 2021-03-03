@@ -13,6 +13,12 @@ from joblib import load
 
 pipeline = load("assets/XGBC.joblib")
 
+sp = pd.read_csv('asset/sp500_df.csv')
+target = 'SP500-PosNeg'
+y = [target]
+X = sp.drop(columns=target)
+pipeline.fit(X, y)
+
 @app.callback(
     Output('prediction-content', 'SP500-PosNeg'),
     [Input('10-year-T', 'value'),
@@ -46,6 +52,8 @@ column1 = dbc.Col(
 
             """
         ),
+        html.H2('Percent chance next month close for the S&P 500 is up', className='mb-5'), 
+        html.Div(id='prediction-content', className='lead')
     ],
     md=4,
 )
