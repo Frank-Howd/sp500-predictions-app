@@ -37,6 +37,41 @@ def predict(ten_year, corporate_profits, gdp, net_exports, unemployment):
     y_pred = pipeline.predict_proba(df)[0]
     return f'{y_pred[1]*100:.2f}% probability'
 
+@app.callback(
+    Output('print-10yr', 'children'),
+    [Input('10-year-T', 'value')],
+)
+def update_T(input_value):
+    return 'You\'ve entered {}%'.format(input_value)
+
+@app.callback(
+    Output('print-cp', 'children'),
+    [Input('Corporate-Profits', 'value')],
+)
+def update_cp(input_value):
+    return f'You\'ve entered ${input_value:,.0f} Billion'
+
+@app.callback(
+    Output('print-gdp', 'children'),
+    [Input('GDP', 'value')],
+)
+def update_gdp(input_value):
+    return 'You\'ve entered ${:,.0f} Billion'.format(input_value)
+
+@app.callback(
+    Output('print-net-exp', 'children'),
+    [Input('Net-Exports', 'value')],
+)
+def update_net_exp(input_value):
+    return 'You\'ve entered ${} Billion'.format(input_value)
+
+@app.callback(
+    Output('print-unemp-rate', 'children'),
+    [Input('Unemployment-Rate', 'value')],
+)
+def update_unemp(input_value):
+    return 'You\'ve entered {}%'.format(input_value)
+
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 column1 = dbc.Col(
@@ -70,7 +105,11 @@ column2 = dbc.Col(
             step=0.1,
             value=1.4,
             marks={n: str(n) for n in range(0,17,2)},
-            className='mb-5'
+            className='mb-3'
+        ),
+        html.Div(id='print-10yr', className='mb-3'),
+        dcc.Markdown(
+            """___"""
         ),
         #dcc.Markdown('## Predictions', className='mb-5'),
         dcc.Markdown('#### Corporate Profits (Billions)'),
@@ -81,8 +120,12 @@ column2 = dbc.Col(
             step=1,
             value=500,
             marks={n: str(n) for n in range(00,3501,500)},
-            className='mb-5'
+            className='mb-3'
         ), 
+        html.Div(id='print-cp', className='mb-3'),
+        dcc.Markdown(
+            """___"""
+        ),
         #dcc.Markdown('## Predictions', className='mb-5'),
         # dcc.Markdown('#### Consumer Price Index'),
         # dcc.Slider(
@@ -114,7 +157,11 @@ column2 = dbc.Col(
             step=1,
             value=12500,
             marks={n: str(n) for n in range(0,25001,2500)},
-            className='mb-5'
+            className='mb-3'
+        ),
+        html.Div(id='print-gdp', className='mb-3'),
+        dcc.Markdown(
+            """___"""
         ),
         #dcc.Markdown('## Predictions', className='mb-5'),
         # dcc.Markdown('#### Housing Starts'),
@@ -158,7 +205,11 @@ column2 = dbc.Col(
             step=10,
             value=-740,
             marks={n: str(n) for n in range(-1000,1000,250)},
-            className='mb-5'
+            className='mb-3'
+        ),
+        html.Div(id='print-net-exp', className='mb-3'),
+        dcc.Markdown(
+            """___"""
         ),
         #dcc.Markdown('## Predictions', className='mb-5'),
         dcc.Markdown('#### Unemployment Rate (%)'),
@@ -169,7 +220,11 @@ column2 = dbc.Col(
             step=0.1,
             value=8.0,
             marks={n: str(n) for n in range(0,17,2)},
-            className='mb-5'
+            className='mb-3'
+        ),
+        html.Div(id='print-unemp-rate', className='mb-3'),
+        dcc.Markdown(
+            """___"""
         )
     ]
 )

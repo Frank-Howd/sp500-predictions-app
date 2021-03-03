@@ -17,11 +17,11 @@ from app import app
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 column1 = dbc.Col(
     [
+        #html.H1("__________________", className='mb-5'),
+        html.H3("Predict if the next month's close for the S&P 500 is up or down using a supervised learning model.", className='mb-5'), 
         dcc.Markdown(
             """
         
-            Predict if the next month's close for the S&P 500 is up or down using a supervised learning model. 
-
             There is an enormous set of factors that go into making market predictions, and it is acknowledged that this app isn't the best at making them. 
 
             The S&P 500 - Month Ahead Direction application is to be used for fun, rather than for investment purposes.
@@ -32,7 +32,7 @@ column1 = dbc.Col(
         ),
         dcc.Link(dbc.Button('Generate Predictions -->', color='primary'), href='/predictions')
     ],
-    md=4,
+    md=6,
 )
 
 #df = pd.read_csv("assets/sp500_df")
@@ -57,7 +57,7 @@ column1 = dbc.Col(
 column2 = dbc.Col(
     [
         #dcc.Graph(figure=fig),
-        html.Img(src='assets/graph_3D.png', className='img-fluid')
+        html.Img(src='assets/index_3d.png', className='img-fluid')
     ]
 )
 
