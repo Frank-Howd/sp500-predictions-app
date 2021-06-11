@@ -1,3 +1,3 @@
-# Dash Template
+# This SP500 predictions app focuses on data visualizations, as well as linear regression modeling for SP500 price predictions
 
-[Instructions](https://lambdaschool.github.io/ds/unit2/dash-template/)
+https://ds24-sp500-preds.herokuapp.com/
